@@ -9,7 +9,13 @@ function App() {
 
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
+    // setGreetMsg(await invoke("greet", { name }));
+    let res = await invoke("get_message", {prompt: name})
+    if (res) {
+      let a = JSON.parse(res as string)
+      setGreetMsg(a.choices[0].text.replace("\n", ""))
+      console.log()
+    }
   }
   return (
     <div className="container">
