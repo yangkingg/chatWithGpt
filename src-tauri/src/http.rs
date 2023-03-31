@@ -33,7 +33,7 @@ pub async fn get_message(prompt: &str) -> Result<String, String> {
 
   match env::var("HTTP_PROXY") {
     Ok(val) => println!("读取到环境变量{}", val),
-    Err(e) => println!("读取环境变量失败"),
+    Err(e) => println!("读取环境变量失败, {}", e),
   }
 
   let resp = client

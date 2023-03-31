@@ -40,7 +40,6 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "chatWithGpt",
         "width": 800,
         "height": 600
       }
