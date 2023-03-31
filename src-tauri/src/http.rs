@@ -1,3 +1,5 @@
+use std::env;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
@@ -28,6 +30,11 @@ pub async fn get_message(prompt: &str) -> Result<String, String> {
     max_tokens: 3000,
     temperature: 0.9,
   };
+
+  match env::var("HTTP_PROXY") {
+    Ok(val) => println!("读取到环境变量{}", val),
+    Err(e) => println!("读取环境变量失败"),
+  }
 
   let resp = client
     .post("https://api.openai.com/v1/completions")
